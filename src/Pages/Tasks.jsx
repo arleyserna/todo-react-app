@@ -4,11 +4,8 @@ import { TaskTable } from '../components/tables/TaskTable';
 
 export function TasksPage() {
     return(
-        <main>
+        <main style={{border: '0px'}}>
             <div>
-                <h2>Tasks Page</h2>
-                <p>This is where you can manage your tasks.</p>
-
                 <TasksInputForm />
                 <TaskTable />
             </div>
