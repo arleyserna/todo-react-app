@@ -18,12 +18,8 @@ export const TaskService = {
         return TaskProcessor.getAllTaskByStatus(status);
     },
 
-    getAllActiveAndNewTask(){
-        return TaskProcessor.getAllActiveAndNewTask();
-    },
-
     updateTask(index,task,status){
         TaskProcessor.updateTaskStatus(index,task,status);
-    }
+    },
 
 }

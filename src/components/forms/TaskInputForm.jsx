@@ -1,19 +1,22 @@
-import React from 'react';
 import { useState } from 'react';
-import { TaskContext } from '../../contexts/TaskContextProvider';
 import { TaskService } from '../../services/taskservice';
+import { TaskModel } from '../../models/TaskModel';
 
 export function TasksInputForm() {
 
-    const [task, setTask] = useState({ type: 'Task', description: '', status: 'new' });
-
-    const { tasks, setTasks } = React.useContext(TaskContext);
+    const [task, setTask] = useState({...TaskModel});
 
     const handleSubmit = (e) => {
         e.preventDefault();
         TaskService.createTask(task);
-        setTask({ type: 'Task', descripcion: '', status: 'new' });
+        setTask({ ...TaskModel });
     }
+
+    /*
+
+        TODO: Separate CSS Styles
+    
+    */
 
     return(
             
@@ -31,11 +34,13 @@ export function TasksInputForm() {
                     placeholder=" Ingrese una nueva tarea" 
                     onChange={(e) => setTask({
                                                 ...task,
-                                                description : e.target.value
+                                                description : e.target.value,
+                                                id: Date.now(),
+
                                             })}
                     value={task.description ?? ''}
             />
-            <button type="submit" style={{margin: '15px', justifyContent: 'flex-end', background: 'rgba(28, 184, 28, 1)'}}>Add Task</button>
+            <button type="submit" style={{ height: '40px', margin: '15px', justifyContent: 'flex-end', background: 'rgba(28, 184, 28, 1)'}}>Add Task</button>
         </form>
         
         

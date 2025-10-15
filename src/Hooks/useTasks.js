@@ -4,35 +4,28 @@ import { TaskService } from "../services/taskservice";
 export function useTasks(){
 
     const [tasks, setTasks] = useState([]);
-    const [doneTasks, setDoneTasks] = useState([]);
-    const [activeTasks, setActiveTasks] = useState([]);
-
-    console.log('TaskHook called');
 
     const updateTasks = () => {
-        setTasks(TaskService.getAllTaskByStatus('new'));
-        setActiveTasks(TaskService.getAllTaskByStatus('active'));
-        setDoneTasks(TaskService.getAllTaskByStatus('completed'));
+
+        console.log('called update tasks');
+        setTasks(TaskService.getAllTasks());
+
     };
 
     useEffect(()=>{
 
         updateTasks();
-        
-    }, []);
 
-    window.addEventListener('storage', updateTasks);
+        window.addEventListener('storage', updateTasks);
+
+        // Cleaning storage Listener
+
+        return () => window.removeEventListener('storage', updateTasks);
+
+    }, []);
 
     console.log('Tasks in hook:', tasks);
     
-    return {
-
-            tasks, 
-            setTasks, 
-            activeTasks,
-            setActiveTasks,
-            doneTasks, 
-            setDoneTasks
-    };
+    return { tasks, setTasks };
 
 }

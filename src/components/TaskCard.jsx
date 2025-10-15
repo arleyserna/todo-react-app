@@ -1,13 +1,25 @@
+import { useState } from "react";
 import { TaskService } from "../services/taskservice";
 
-export function TaskCard({ task, index, deleteTask }) {
+
+export function TaskCard({task, index}) {
+
+    const [showDialog, setShowDialog] = useState(false);
     
-    return(
-        <div className="card"
-            key={index}>
-            <h4 style={{padding: '5px 10px', margin: '5px', background: task.status === 'completed' ? '#0bd6d6ff': 'orange', borderRadius: '1rem', fontWeight: '400', textAlign: 'left'}}>{task.description}</h4>
-            <div style={{display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-end'}}>
-                <button onClick={() => deleteTask(index)} style={{marginRight: '5px'}}>Delete</button>
+    return( <div className="card" id={index}>
+            <h4 className= {task.status === 'completed' ? 'taskrdy' : 'taskicp'}
+                onDoubleClick={() => setShowDialog(!showDialog)}>{task.description}</h4>
+
+                    {/*showDialog && (
+                        <div style={{position: 'fixed'}}>
+                            <h1 onClick={() => setShowDialog(!showDialog)}>Hola Mundo</h1>
+                        </div>
+                        
+                    )*/}
+
+            <div>
+                <button onClick={() => TaskService.deleteTask(index)} style={{marginRight: '5px'}}>Delete</button>
+                {console.log('Rastreando el valor del índice: ', index)}
                 <select onChange={(e) => TaskService.updateTask(index,task, e.target.value)} value={task.status}>
                     <option value='new'>New</option>
                     <option value='active'>Active</option>
@@ -15,5 +27,9 @@ export function TaskCard({ task, index, deleteTask }) {
                 </select>
             </div>
         </div>
+
     )
+
 }
+
+//(e) => console.log(e.currentTarget.parentElement.getAttribute('itemID'))

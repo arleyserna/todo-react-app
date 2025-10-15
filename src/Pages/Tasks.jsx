@@ -4,7 +4,7 @@ import { TaskTable } from '../components/tables/TaskTable';
 
 export function TasksPage() {
     return(
-        <main style={{border: '0px'}}>
+        <main>
             <div>
                 <TasksInputForm />
                 <TaskTable />

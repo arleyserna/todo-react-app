@@ -3,7 +3,8 @@ import { TaskContext } from "../contexts/TaskContextProvider"
 
 export function Header() {
 
-    const { tasks, setTasks } = use(TaskContext)
+    // const { tasks, setTasks } = use(TaskContext) Not in use, please ignore
+    // TODO: Separate CSS Styles
 
     return(
         <header>

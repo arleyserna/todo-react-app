@@ -1,7 +1,9 @@
+import { getTaskList } from "../utils/utils";
+
 export const TaskProcessor={
 
     createTask(task){
-        localStorage.setItem('TaskID_'+Date.now(), JSON.stringify(task));
+        localStorage.setItem(task.id, JSON.stringify(task));
         window.dispatchEvent(new Event('storage'));
     },
     
@@ -21,17 +23,31 @@ export const TaskProcessor={
 
     },
 
+    updateTaskDescription(index, task, newDescription){
+
+        const taskCache = task;
+
+        try {
+            
+            taskCache.description = newDescription;
+            localStorage.setItem(index, JSON.stringify(taskCache));
+            window.dispatchEvent(new Event('storage'));
+
+        } catch (error) {
+            
+            console.error('Error while updating task description', task);
+        }
+    },
+
     getAllTasks(){
-        return Object.entries(localStorage);
+        return getTaskList();
     },
 
     getAllTaskByStatus(status){
-        return Object.entries(localStorage).filter(task => JSON.parse(task[1]).status === status);
-    },
 
-    getAllActiveAndNewTask(){
-        return Object.entries(localStorage).filter(task => (JSON.parse(task[1]).status === 'new' ||  JSON.parse(task[1]).status ==='active'));
+        return getTaskList().filter(task => task.status === status);
     },
+    
 
     deleteTask(index){
 
@@ -43,7 +59,5 @@ export const TaskProcessor={
         }
 
     }
-
-
 
 }
