@@ -35,7 +35,7 @@ export function TasksInputForm() {
                     onChange={(e) => setTask({
                                                 ...task,
                                                 description : e.target.value,
-                                                id: Date.now(),
+                                                id: crypto.randomUUID(),
 
                                             })}
                     value={task.description ?? ''}

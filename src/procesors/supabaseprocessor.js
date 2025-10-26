@@ -18,13 +18,11 @@ export const SupabaseProcessor={
         const { data, error } = await supabase
             .from('task')
             .select('*');
-            console.log(data, error);
             
         if(error){
             console.error('Error fetching tasks: ', error);
             return [];
         }
-        //window.dispatchEvent(new Event('update'));
         return data;
     },
 
@@ -48,7 +46,7 @@ export const SupabaseProcessor={
             .update({ status: status })
             .eq('id', index);
         if(error){
-            console.error('Error updating task status: ', error);
+            console.error('Error while updating task status: ', error);
         }
         window.dispatchEvent(new Event('update'));
         return data;

@@ -1,12 +1,9 @@
 
 import { TaskContext } from "../contexts/TaskContextProvider"
 
-export function Header(username) {
+export function Header() {
 
-    console.log('Header username prop:', username);
-
-    username ? 
-        
+        return(
             <header>
                 <div style={{display: 'flex', flexGrow: '4', justifyContent: 'start', alignItems: 'center' }}>
                     <img src="./clipboard2.svg" width={100} style={{marginRight: '25%'}}/>
@@ -14,8 +11,5 @@ export function Header(username) {
                 </div>
                 <p>Keep track of your tasks and stay organized!</p>
             </header>
-        : null
-
-         
-    
+        )       
 }
