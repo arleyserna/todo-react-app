@@ -1,10 +1,10 @@
 import { getTaskList } from "../utils/utils";
 
-export const TaskProcessor={
+export const LocalStorageProcessor={
 
     createTask(task){
         localStorage.setItem(task.id, JSON.stringify(task));
-        window.dispatchEvent(new Event('storage'));
+        window.dispatchEvent(new Event('update'));
     },
     
     updateTaskStatus(index,task,status){
@@ -15,7 +15,7 @@ export const TaskProcessor={
 
             taskCache.status = status;
             localStorage.setItem(index, JSON.stringify(taskCache));
-            window.dispatchEvent(new Event('storage'));
+            window.dispatchEvent(new Event('update'));
 
         } catch (error) {
             console.error('Error while updating task: ', task)
@@ -31,7 +31,7 @@ export const TaskProcessor={
             
             taskCache.description = newDescription;
             localStorage.setItem(index, JSON.stringify(taskCache));
-            window.dispatchEvent(new Event('storage'));
+            window.dispatchEvent(new Event('update'));
 
         } catch (error) {
             
@@ -40,7 +40,8 @@ export const TaskProcessor={
     },
 
     getAllTasks(){
-        return getTaskList();
+        
+        return Promise.resolve(getTaskList());
     },
 
     getAllTaskByStatus(status){
@@ -53,7 +54,7 @@ export const TaskProcessor={
 
         try {
             localStorage.removeItem(index);
-            window.dispatchEvent(new Event('storage'));
+            window.dispatchEvent(new Event('update'));
         } catch (error) {
             console.error('Error while deleting tasks: ', index, ' Error: ', error)
         }

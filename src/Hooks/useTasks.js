@@ -8,19 +8,22 @@ export function useTasks(){
     const updateTasks = () => {
 
         console.log('called update tasks');
-        setTasks(TaskService.getAllTasks());
+        TaskService.getAllTasks().then(data => {
+            setTasks(data);
+        });
 
+       // setTasks(TaskService.getAllTasks());
     };
 
     useEffect(()=>{
 
         updateTasks();
 
-        window.addEventListener('storage', updateTasks);
+        window.addEventListener('update', updateTasks);
 
         // Cleaning storage Listener
 
-        return () => window.removeEventListener('storage', updateTasks);
+        return () => window.removeEventListener('update', updateTasks);
 
     }, []);
 

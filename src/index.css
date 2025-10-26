@@ -5,8 +5,13 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #bbb6b6;
+  background: #80d6e9;
+  background: linear-gradient(315deg, rgb(56, 99, 75) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgb(203, 231, 99) 98%);
 
+
+  animation: gradient 15s ease infinite;
+  background-size: 400% 400%;
+  background-attachment: fixed;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -42,9 +47,10 @@ button {
   font-size: 0.7em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  background: #7d6fcf;
+  background: radial-gradient(circle, rgb(160, 116, 211) 0%, rgb(125, 83, 202) 100%);
 }
 button:hover {
   background-color: #646cff;
@@ -55,13 +61,14 @@ button:focus-visible {
 }
 
 header {
-  background-color: #1e293b;
   color: #fff;
   text-align: center;
   padding: 1rem;
   border-radius: 0.5rem;
   width: 90vw;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #dff1f5;
+  background: radial-gradient(circle, rgb(52, 148, 170) 0%, rgb(39, 121, 94) 100%);
 }
 
 title {
@@ -76,7 +83,6 @@ subtitle {
 }
 
 .card {
-  background-color: #136eec;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -86,19 +92,23 @@ subtitle {
   height:auto;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding: 10px;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   margin-bottom: 10px;
+  background: #3d8fa1;
+  background: radial-gradient(circle, rgba(223, 241, 245, 1) 0%, rgb(168, 164, 140) 80%);
 }
 
 .card:hover {
   background-color: #0f5bb5;
   box-shadow: #f9f9f9 0px 7px 29px 0px;
   transition: all 0.3s ease-in-out;
+  animation: mover 1s;
 }
 
 .card:hover button{
   background-color: red;
   padding: 8px;
+  
 }
 
 .card h4{
@@ -140,7 +150,10 @@ subtitle {
 
 .taskicp{
 
-  background-color: orange;
+  background-color: rgb(121, 113, 100);
+  box-shadow: rgb(224, 173, 90);
+  background: #dff1f5;
+  background: radial-gradient(circle, rgb(111, 187, 204) 0%, rgb(83, 126, 112) 100%);
 }
 
 .cardcontainer {
@@ -149,9 +162,10 @@ subtitle {
   flex-direction: column;
   flex-wrap: wrap;
   padding: 0.5rem;
-  background-color: #809ac2;
   border-radius: 1rem;
   min-height: 400px;
+  background: #dff1f5;
+  background: radial-gradient(circle, rgb(61, 133, 150) 0%, rgb(32, 81, 85) 150%);
 }
 
 .cardcontainer h2 {
@@ -167,6 +181,30 @@ subtitle {
   gap: 2rem;
 
 }
+
+.loginform{
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 5rem;
+  border-radius: 1rem;
+  justify-content: space-between;
+  background-color: #631919;
+
+}
+.form{
+  border: 10px;
+  background: rgba(154, 177, 154, 1);
+  border-radius: 12px;
+  display: flex;
+  margin-top: 40px;
+  align-items: center;
+  width: 90vw
+
+}
+
+
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -218,6 +256,22 @@ subtitle {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-0px);
   }
+
+  30% {
+    scale: 1.2;
+  }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
 }
