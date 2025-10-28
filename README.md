@@ -12,24 +12,31 @@ A simple **React** application for managing tasks. It includes a data model (`Ta
 
 ## Project Structure
 
+
 ```
-src/
- ├─ components/
- │   ├─ TasksInputForm.jsx
- │   ├─ TaskCard.jsx
- │   └─ TaskList.jsx
- │
- ├─ hooks/
- │   └─ useTasks.js
- │
- ├─ models/
- │   └─ TaskModel.js
- │
- ├─ services/
- │   └─ TaskService.js
- │
- └─ App.jsx
+todo-react-app/
+├── src/
+│   ├── components/
+│   │   ├── forms/
+│   │   │   ├── LoginForm.jsx
+│   │   │   └── TaskInputForm.jsx
+│   │   ├── tables/
+│   │   │   └── TaskTable.jsx
+│   │   ├── TaskCard.jsx
+│   │   └── TaskCardContainer.jsx
+│   ├── hooks/
+│   │   └── useTasks.js
+│   ├── services/
+│   │   └── SupabaseProcessor.js
+│   ├── utils/
+│   │   └── supabase.js
+│   └── App.jsx
+├── public/
+│   ├── clipboard2.svg
+│   └── bubble-tea.svg
+└── ...
 ```
+
 
 ## Example Data Model
 
@@ -72,11 +79,15 @@ The app will typically run at `http://localhost:5173` (if using Vite) or `http:/
 
 `TaskService.js` contains logic for creating, updating, and deleting tasks. It can be easily adapted to connect with a real backend API such as Supabase, Firebase, or any REST API.
 
+- `SupabaseProcessor`: Handles all database operations
+  - Task CRUD operations
+  - Real-time updates
+  - Error handling
+
 ## Future Improvements
 
-- Integrate with a real REST API
+- Integrate with more REST API
 - Add user authentication
-- Implement filtering by task status
 - Add unit tests with Jest and React Testing Library
 
 ## Author
