@@ -1,15 +1,11 @@
-import { useState } from "react";
 import { TaskService } from "../services/taskservice";
 
 
 export function TaskCard({task, index}) {
 
-    const [showDialog, setShowDialog] = useState(false);
     
     return( <div className="card" id={index}>
-                <h4 className= {task.status === 'completed' ? 'taskrdy' : 'taskicp'}
-                    onDoubleClick={() => setShowDialog(!showDialog)}>{task.description}</h4>
-
+                <h4 className= {task.status === 'completed' ? 'taskrdy' : 'taskicp'}>{task.description}</h4>
 
                 <div>
                     <button onClick={() => TaskService.deleteTask(index)} style={{marginRight: '5px'}}>Delete</button>
@@ -24,5 +20,3 @@ export function TaskCard({task, index}) {
     )
 
 }
-
-//(e) => console.log(e.currentTarget.parentElement.getAttribute('itemID'))

@@ -3,7 +3,7 @@ import { SupabaseProcessor } from "../procesors/supabaseprocessor";
 
 // Change TaskProcessor here to switch between LocalStorage and Supabase
 
-const TaskProcessor = LocalStorageProcessor;
+const TaskProcessor = SupabaseProcessor;
 
 export const TaskService = {
 

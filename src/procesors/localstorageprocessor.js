@@ -18,7 +18,7 @@ export const LocalStorageProcessor={
             window.dispatchEvent(new Event('update'));
 
         } catch (error) {
-            console.error('Error while updating task: ', task)
+            console.error('Error while updating task: ', error)
         }
 
     },
@@ -35,7 +35,7 @@ export const LocalStorageProcessor={
 
         } catch (error) {
             
-            console.error('Error while updating task description', task);
+            console.error('Error while updating task description', error);
         }
     },
 
